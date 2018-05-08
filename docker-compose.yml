@@ -1,0 +1,14 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:1.13
+    hostname: nginx
+    volumes:
+      - ./etc:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+  apache:
+    image: httpd:2.4
+    hostname: apache
+    ports:
+     - "8090:80"
