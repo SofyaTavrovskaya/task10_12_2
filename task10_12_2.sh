@@ -14,12 +14,11 @@ add-apt-repository \
 
 echo "Updating apt"
 apt-get update
-echo "Installing Docker-CE and Compose" # probably docker.io package is needed
+echo "Installing Docker-CE and Compose" 
 apt-get install docker-ce docker-compose -y
-echo "Deploying dockers"
-docker-compose up -d
 
 envsubst < subjalt_template.cnf > subjalt.cnf
+envsubst '${NGINX_PORT}' < nginx_template.conf > etc/nginx.conf
 echo "Making dir for certs"
 mkdir -p certs/
 
@@ -50,6 +49,14 @@ openssl x509 -req\
        -out certs/web.crt
 cat certs/root.crt certs/web.crt> \
     certs/web-ca-chain.pem
+
+echo "Making dir for nginx-log"
+mkdir -p nginx-log/
+
+echo "Deploying dockers"
+docker-compose up -d
+
+
 
 
 

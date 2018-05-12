@@ -5,10 +5,10 @@ services:
     hostname: nginx
     volumes:
       - ./etc:/etc/nginx/conf.d
-      - ./certs:/etc/nginx/web-ca-chain.pem
-      - ./certs:/etc/nginx/web.key
+      - ./certs:/etc/nginx/certs
+      - ./nginx-log:/var/log/nginx
     ports:
-      - "80:80"
+      - "443:${NGINX_PORT}"
   apache:
     image: httpd:2.4
     hostname: apache
