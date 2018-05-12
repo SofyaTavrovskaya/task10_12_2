@@ -8,5 +8,5 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = sofya-K53E
-IP.1 = 127.0.0.1
+DNS.1 = ${HOST_NAME}
+IP.1 = ${EXTERNAL_IP}

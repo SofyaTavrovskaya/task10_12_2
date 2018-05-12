@@ -8,7 +8,7 @@ services:
       - ./certs:/etc/nginx/certs
       - ./nginx-log:/var/log/nginx
     ports:
-      - "443:${NGINX_PORT}"
+      - "17080:443"
   apache:
     image: httpd:2.4
     hostname: apache
