@@ -5,6 +5,8 @@ services:
     hostname: nginx
     volumes:
       - ./etc:/etc/nginx/conf.d
+      - ./certs:/etc/nginx/web-ca-chain.pem
+      - ./certs:/etc/nginx/web.key
     ports:
       - "80:80"
   apache:
