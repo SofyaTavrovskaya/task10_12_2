@@ -1,16 +1,16 @@
 version: '2'
 services:
   nginx:
-    image: nginx:1.13
+    image: ${NGINX_IMAGE}
     hostname: nginx
     volumes:
       - ./etc:/etc/nginx/conf.d
       - ./certs:/etc/nginx/certs
-      - ./nginx-log:/var/log/nginx
+      - ${NGINX_LOG_DIR}:/var/log/nginx
     ports:
-      - "17080:443"
+      - "${NGINX_PORT}:443"
   apache:
-    image: httpd:2.4
+    image: ${APACHE_IMAGE}
     hostname: apache
     ports:
      - "8090:80"

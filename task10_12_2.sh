@@ -6,7 +6,7 @@ export $(cut -d= -f1 config| grep -v '^$\|^\s*\#' config)
 echo "Adding Docker repo key"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-echo "Adding Dicker repo"
+echo "Adding Docker repo"
 add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
@@ -62,7 +62,7 @@ cat certs/root.crt certs/web.crt  > certs/web-ca-chain.pem
 
 
 echo "Making dir for nginx-log"
-mkdir -p nginx-log/
+mkdir -p ${NGINX_LOG_DIR}
 
 echo "Deploying dockers"
 docker-compose up -d
