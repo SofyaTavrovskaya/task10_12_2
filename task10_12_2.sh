@@ -60,6 +60,7 @@ openssl x509 -req\
 
 cat certs/root.crt certs/web.crt  > certs/web-ca-chain.pem
 
+envsubst < docker-compose_template.yml > docker-compose.yml
 
 echo "Making dir for nginx-log"
 mkdir -p ${NGINX_LOG_DIR}
